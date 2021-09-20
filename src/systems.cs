@@ -6,7 +6,7 @@
 
 namespace Leopotam.EcsLite.Threads {
     public abstract class EcsThreadSystem<TThread, T1> : EcsThreadSystemBase, IEcsRunSystem
-        where TThread : class, IEcsThread<T1>, new ()
+        where TThread : struct, IEcsThread<T1>
         where T1 : struct {
         EcsFilter _filter;
         EcsPool<T1> _pool1;
@@ -19,13 +19,18 @@ namespace Leopotam.EcsLite.Threads {
                 _pool1 = world.GetPool<T1> ();
                 _filter = GetFilter (world);
                 _thread = new TThread ();
-                _worker = _thread.Execute;
+                _worker = Execute;
             }
             _thread.Init (
                 _filter.GetRawEntities (),
                 _pool1.GetRawDenseItems (), _pool1.GetRawSparseItems ());
             SetData (systems, _thread);
             ThreadService.Run (_worker, _filter.GetEntitiesCount (), GetChunkSize (systems));
+        }
+
+        private void Execute (int fromIndex, int beforeIndex)
+        {
+            _thread.Execute(fromIndex, beforeIndex);
         }
 
         protected virtual void SetData (EcsSystems systems, TThread thread) { }
@@ -40,7 +45,7 @@ namespace Leopotam.EcsLite.Threads {
         EcsPool<T2> _pool2;
         TThread _thread;
         ThreadWorkerHandler _worker;
-    
+
         public void Run (EcsSystems systems) {
             if (_filter == null) {
                 var world = GetWorld (systems);
@@ -48,7 +53,7 @@ namespace Leopotam.EcsLite.Threads {
                 _pool2 = world.GetPool<T2> ();
                 _filter = GetFilter (world);
                 _thread = new TThread ();
-                _worker = _thread.Execute;
+                _worker = Execute;
             }
             _thread.Init (
                 _filter.GetRawEntities (),
@@ -57,10 +62,15 @@ namespace Leopotam.EcsLite.Threads {
             SetData (systems, _thread);
             ThreadService.Run (_worker, _filter.GetEntitiesCount (), GetChunkSize (systems));
         }
-    
+
+        private void Execute (int fromIndex, int beforeIndex)
+        {
+            _thread.Execute(fromIndex, beforeIndex);
+        }
+
         protected virtual void SetData (EcsSystems systems, TThread thread) { }
     }
-    
+
     public abstract class EcsThreadSystem<TThread, T1, T2, T3> : EcsThreadSystemBase, IEcsRunSystem
         where TThread : struct, IEcsThread<T1, T2, T3>
         where T1 : struct
@@ -81,7 +91,7 @@ namespace Leopotam.EcsLite.Threads {
                 _pool3 = world.GetPool<T3> ();
                 _filter = GetFilter (world);
                 _thread = new TThread ();
-                _worker = _thread.Execute;
+                _worker = Execute;
             }
             _thread.Init (
                 _filter.GetRawEntities (),
@@ -91,10 +101,15 @@ namespace Leopotam.EcsLite.Threads {
             SetData (systems, _thread);
             ThreadService.Run (_worker, _filter.GetEntitiesCount (), GetChunkSize (systems));
         }
-    
+
+        private void Execute (int fromIndex, int beforeIndex)
+        {
+            _thread.Execute(fromIndex, beforeIndex);
+        }
+
         protected virtual void SetData (EcsSystems systems, TThread thread) { }
     }
-    
+
     public abstract class EcsThreadSystem<TThread, T1, T2, T3, T4> : EcsThreadSystemBase, IEcsRunSystem
         where TThread : struct, IEcsThread<T1, T2, T3, T4>
         where T1 : struct
@@ -118,7 +133,7 @@ namespace Leopotam.EcsLite.Threads {
                 _pool4 = world.GetPool<T4> ();
                 _filter = GetFilter (world);
                 _thread = new TThread ();
-                _worker = _thread.Execute;
+                _worker = Execute;
             }
             _thread.Init (
                 _filter.GetRawEntities (),
@@ -129,7 +144,12 @@ namespace Leopotam.EcsLite.Threads {
             SetData (systems, _thread);
             ThreadService.Run (_worker, _filter.GetEntitiesCount (), GetChunkSize (systems));
         }
-    
+
+        private void Execute (int fromIndex, int beforeIndex)
+        {
+            _thread.Execute(fromIndex, beforeIndex);
+        }
+
         protected virtual void SetData (EcsSystems systems, TThread thread) { }
     }
 
