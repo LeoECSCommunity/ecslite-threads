@@ -28,8 +28,7 @@ namespace Leopotam.EcsLite.Threads {
             ThreadService.Run (_worker, _filter.GetEntitiesCount (), GetChunkSize (systems));
         }
 
-        private void Execute (int fromIndex, int beforeIndex)
-        {
+        private void Execute (int fromIndex, int beforeIndex) {
             _thread.Execute (fromIndex, beforeIndex);
         }
 
