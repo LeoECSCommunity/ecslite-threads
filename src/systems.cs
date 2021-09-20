@@ -30,7 +30,7 @@ namespace Leopotam.EcsLite.Threads {
 
         private void Execute (int fromIndex, int beforeIndex)
         {
-            _thread.Execute(fromIndex, beforeIndex);
+            _thread.Execute (fromIndex, beforeIndex);
         }
 
         protected virtual void SetData (EcsSystems systems, TThread thread) { }
@@ -64,7 +64,7 @@ namespace Leopotam.EcsLite.Threads {
         }
 
         void Execute (int fromIndex, int beforeIndex) {
-            _thread.Execute(fromIndex, beforeIndex);
+            _thread.Execute (fromIndex, beforeIndex);
         }
 
         protected virtual void SetData (EcsSystems systems, TThread thread) { }
@@ -102,7 +102,7 @@ namespace Leopotam.EcsLite.Threads {
         }
 
         void Execute (int fromIndex, int beforeIndex) {
-            _thread.Execute(fromIndex, beforeIndex);
+            _thread.Execute (fromIndex, beforeIndex);
         }
 
         protected virtual void SetData (EcsSystems systems, TThread thread) { }
@@ -144,7 +144,7 @@ namespace Leopotam.EcsLite.Threads {
         }
 
         void Execute (int fromIndex, int beforeIndex) {
-            _thread.Execute(fromIndex, beforeIndex);
+            _thread.Execute (fromIndex, beforeIndex);
         }
 
         protected virtual void SetData (EcsSystems systems, TThread thread) { }
