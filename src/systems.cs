@@ -24,7 +24,7 @@ namespace Leopotam.EcsLite.Threads {
             _thread.Init (
                 _filter.GetRawEntities (),
                 _pool1.GetRawDenseItems (), _pool1.GetRawSparseItems ());
-            SetData (systems, _thread);
+            SetData (systems, ref _thread);
             ThreadService.Run (_worker, _filter.GetEntitiesCount (), GetChunkSize (systems));
         }
 
@@ -32,7 +32,7 @@ namespace Leopotam.EcsLite.Threads {
             _thread.Execute (fromIndex, beforeIndex);
         }
 
-        protected virtual void SetData (EcsSystems systems, TThread thread) { }
+        protected virtual void SetData (EcsSystems systems, ref TThread thread) { }
     }
 
     public abstract class EcsThreadSystem<TThread, T1, T2> : EcsThreadSystemBase, IEcsRunSystem
@@ -58,7 +58,7 @@ namespace Leopotam.EcsLite.Threads {
                 _filter.GetRawEntities (),
                 _pool1.GetRawDenseItems (), _pool1.GetRawSparseItems (),
                 _pool2.GetRawDenseItems (), _pool2.GetRawSparseItems ());
-            SetData (systems, _thread);
+            SetData (systems, ref _thread);
             ThreadService.Run (_worker, _filter.GetEntitiesCount (), GetChunkSize (systems));
         }
 
@@ -66,7 +66,7 @@ namespace Leopotam.EcsLite.Threads {
             _thread.Execute (fromIndex, beforeIndex);
         }
 
-        protected virtual void SetData (EcsSystems systems, TThread thread) { }
+        protected virtual void SetData (EcsSystems systems, ref TThread thread) { }
     }
 
     public abstract class EcsThreadSystem<TThread, T1, T2, T3> : EcsThreadSystemBase, IEcsRunSystem
@@ -138,7 +138,7 @@ namespace Leopotam.EcsLite.Threads {
                 _pool2.GetRawDenseItems (), _pool2.GetRawSparseItems (),
                 _pool3.GetRawDenseItems (), _pool3.GetRawSparseItems (),
                 _pool4.GetRawDenseItems (), _pool4.GetRawSparseItems ());
-            SetData (systems, _thread);
+            SetData (systems, ref _thread);
             ThreadService.Run (_worker, _filter.GetEntitiesCount (), GetChunkSize (systems));
         }
 
@@ -146,7 +146,7 @@ namespace Leopotam.EcsLite.Threads {
             _thread.Execute (fromIndex, beforeIndex);
         }
 
-        protected virtual void SetData (EcsSystems systems, TThread thread) { }
+        protected virtual void SetData (EcsSystems systems, ref TThread thread) { }
     }
 
     public abstract class EcsThreadSystemBase {
