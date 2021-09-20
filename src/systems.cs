@@ -80,7 +80,7 @@ namespace Leopotam.EcsLite.Threads {
         EcsPool<T3> _pool3;
         TThread _thread;
         ThreadWorkerHandler _worker;
-    
+
         public void Run (EcsSystems systems) {
             if (_filter == null) {
                 var world = GetWorld (systems);
@@ -120,7 +120,7 @@ namespace Leopotam.EcsLite.Threads {
         EcsPool<T4> _pool4;
         TThread _thread;
         ThreadWorkerHandler _worker;
-    
+
         public void Run (EcsSystems systems) {
             if (_filter == null) {
                 var world = GetWorld (systems);
