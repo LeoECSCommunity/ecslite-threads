@@ -62,7 +62,7 @@ class TestThreadSystem : EcsThreadSystem<TestThread, C1> {
     }
 
     // Optional additional initialization of job structure.
-    protected override void SetData (EcsSystems systems, TestThread thread) {
+    protected override void SetData (EcsSystems systems, ref TestThread thread) {
         thread.DeltaTime = Time.deltaTime;
     }
 }
@@ -71,7 +71,7 @@ class TestThreadSystem : EcsThreadSystem<TestThread, C1> {
  
 ## Thread
 ```csharp
-class TestThread : IEcsThread<C1> {
+struct TestThread : IEcsThread<C1> {
     public float DeltaTime;
     int[] _entities;
     C1[] _pool1;
