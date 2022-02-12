@@ -26,7 +26,7 @@ namespace Leopotam.EcsLite.Threads {
         }
 
         public static void Run(ThreadWorkerHandler worker, int count, int chunkSize) {
-#if DEBUG
+#if DEBUG && !LEOECSLITE_NO_SANITIZE_CHECKS
             if (_task != null) { throw new Exception ("Calls from multiple threads not supported."); }
 #endif
             if (count <= 0 || chunkSize <= 0) {
