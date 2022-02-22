@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------------
 // The MIT License
 // Threads support for LeoECS Lite https://github.com/Leopotam/ecslite-threads
-// Copyright (c) 2021 Leopotam <leopotam@gmail.com>
+// Copyright (c) 2021-2022 Leopotam <leopotam@gmail.com>
 // ----------------------------------------------------------------------------
 
 using System;
@@ -26,7 +26,7 @@ namespace Leopotam.EcsLite.Threads {
         }
 
         public static void Run(ThreadWorkerHandler worker, int count, int chunkSize) {
-#if DEBUG
+#if DEBUG && !LEOECSLITE_NO_SANITIZE_CHECKS
             if (_task != null) { throw new Exception ("Calls from multiple threads not supported."); }
 #endif
             if (count <= 0 || chunkSize <= 0) {
