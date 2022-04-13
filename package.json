@@ -1,10 +1,10 @@
 {
-    "name": "com.leopotam.ecslite.threads",
-    "author": "Leopotam",
-    "displayName": "LeoECS Lite Threads",
-    "description": "Threads support for LeoECS Lite.",
+    "name": "com.leoecscommunity.ecslite.threads",
+    "author": "LeoECSCommunity",
+    "displayName": "LeoECSCommunity Lite Threads",
+    "description": "Threads support for LeoECSCommunity Lite.",
     "unity": "2020.3",
-    "version": "2022.2.22",
+    "version": "0.1.0-preview",
     "keywords": [
         "leoecslite",
         "leoecs",
@@ -15,6 +15,6 @@
     "dependencies": {},
     "repository": {
         "type": "git",
-        "url": "https://github.com/Leopotam/ecslite-threads.git"
+        "url": "https://github.com/LeoECSCommunity/ecslite-threads.git"
     }
 }
